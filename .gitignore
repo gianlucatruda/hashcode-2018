@@ -6,6 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+# Hashcode data
+*.out
+*.in
+*.pdf
+
 # Distribution / packaging
 .Python
 env/
