@@ -1,9 +1,11 @@
 def assign(vehicles, rides, curr_time):
-	print("foo")
-	for i in range(len(rides)):
-		if i>len(vehicles)-1:
-			break
-		if not rides[i].assigned:
-			vehicles[i].set_ride(rides[i], curr_time, i)
-			rides[i].assigned = True
-
+	# print("foo")
+	for v in vehicles:
+		allAssigned = True
+		for ind, r in enumerate(rides):
+			if not r.assigned:
+				allAssigned = False
+				if v.ttl != 0:	continue
+				v.set_ride(r, curr_time, ind )
+				r.assign()
+		if allAssigned: break
