@@ -1,5 +1,5 @@
 import hash_io as io
-import hash_scheduler as scheduler
+import scheduler
 import vehicle
 import ride
 
@@ -18,14 +18,19 @@ vehicles = []
 rides = []
 
 for i in range(num_cars):
-	vehicles.append(vehicle())
+	vehicles.append(vehicle.vehicle())
 
 for i in range(len(ride_list)):
-	rides.append(ride(ride_list[i]))
+	rides.append(ride.ride(ride_list[i]))
 
-for i in range num_steps:
+# The meat
+print("debug")
+for i in range (num_steps):
 	scheduler.assign(vehicles, rides, i)
+	print(vehicles[0].rides)
 	for v in vehicles:
 		v.move()
+	break
+
 
 io.write_file("b_should_be_easy.out", vehicles)

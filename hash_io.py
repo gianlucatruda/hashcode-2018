@@ -40,9 +40,9 @@ corresponding to each vehicles rides.
 def write_file(fname, vehicles):
 	out_text = ""
 	for v in vehicles:
-		out_text += str(len(v))
-		for i in range(len(v)):
-			out_text += " "+str(v[i])
+		out_text += str(len(v.rides))
+		for r in v.rides:
+			out_text += " "+str(r)
 		out_text += "\n"
 	out_file = open(fname, "wb")
 	out_file.write(bytes(out_text, 'UTF-8'))
