@@ -1,7 +1,7 @@
 
 '''
 Takes in filename as a string and returns array formatted as
-[rows, columns, cars, bonus, steps, <list of rides>]
+per the description.
 '''
 def read_file(fname):
 	if fname == "":
@@ -25,7 +25,10 @@ def read_file(fname):
 		end_point = [int(params[2]), int(params[3])]
 		early_start = int(params[4])
 		late_finish = int(params[5])
-		ride_list.append([i, start_point, end_point, early_start, late_finish])
+		ride_list.append([
+			start_point[0], start_point[1], end_point[0], end_point[1],
+			early_start, late_finish
+		])
 
 	file.close()
 	return [rows, cols, cars, bonus, steps, ride_list]

@@ -12,7 +12,7 @@ bonus = params[3]
 num_steps = params[4]
 
 ride_list = params[5]
-# [i, start_point, end_point, early_start, late_finish]
+# [start_point_x, start_point_y, end_point_x, end_point_y, early_start, late_finish]
 
 vehicles = []
 rides = []
@@ -24,6 +24,8 @@ for i in range(len(ride_list)):
 	rides.append(ride(ride_list[i]))
 
 for i in range num_steps:
-	scheduler.assign(vehicles, rides)
+	scheduler.assign(vehicles, rides, i)
 	for v in vehicles:
 		v.move()
+
+io.write_file("b_should_be_easy.out", vehicles)
