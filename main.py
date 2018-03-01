@@ -24,13 +24,10 @@ for i in range(len(ride_list)):
 	rides.append(ride.ride(ride_list[i]))
 
 # The meat
-print("debug")
 for i in range (num_steps):
 	scheduler.assign(vehicles, rides, i)
-	print(vehicles[0].rides)
 	for v in vehicles:
 		v.move()
 	break
-
 
 io.write_file("b_should_be_easy.out", vehicles)

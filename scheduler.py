@@ -1,5 +1,4 @@
 def assign(vehicles, rides, curr_time):
-	print("foo")
 	for i in range(len(rides)):
 		if i>len(vehicles)-1:
 			break
