@@ -1,4 +1,5 @@
 import hash_io as io
+import hash_scheduler as scheduler
 import vehicle
 import ride
 
@@ -23,6 +24,6 @@ for i in range(len(ride_list)):
 	rides.append(ride(ride_list[i]))
 
 for i in range num_steps:
+	scheduler.assign(vehicles, rides)
 	for v in vehicles:
-		# check rides
-
+		v.move()
