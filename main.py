@@ -28,6 +28,5 @@ for i in range (num_steps):
 	scheduler.assign(vehicles, rides, i)
 	for v in vehicles:
 		v.move()
-	break
 
 io.write_file("b_should_be_easy.out", vehicles)
