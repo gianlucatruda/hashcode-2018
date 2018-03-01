@@ -3,29 +3,42 @@ import scheduler
 import vehicle
 import ride
 
-params = io.read_file("b_should_be_easy.in")
-# [rows, cols, cars, bonus, steps, ride_list]
+file_names = [
+	"a_example",
+	"b_should_be_easy",
+	"c_no_hurry",
+	"d_metropolis",
+	"e_high_bonus"
+]
 
-dimensions = [params[0], params[1]]
-num_cars = params[2]
-bonus = params[3]
-num_steps = params[4]
+for f in file_names:
+	print("Reading:",f)
+	params = io.read_file(f+".in")
+	# [rows, cols, cars, bonus, steps, ride_list]
 
-ride_list = params[5]
-# [start_point_x, start_point_y, end_point_x, end_point_y, early_start, late_finish]
+	dimensions = [params[0], params[1]]
+	num_cars = params[2]
+	bonus = params[3]
+	num_steps = params[4]
 
-vehicles = []
-rides = []
+	ride_list = params[5]
+	# [start_point_x, start_point_y, end_point_x, end_point_y, early_start, late_finish]
 
-for i in range(num_cars):
-	vehicles.append(vehicle.vehicle())
+	vehicles = []
+	rides = []
 
-for l in ride_list:
-	rides.append(ride.ride(l))
-# The meat
-for i in range (num_steps):
-	scheduler.assign(vehicles, rides, i)
-	for v in vehicles:
-		v.move()
+	for i in range(num_cars):
+		vehicles.append(vehicle.vehicle())
 
-io.write_file("b_should_be_easy.out", vehicles)
+	for l in ride_list:
+		rides.append(ride.ride(l))
+
+	for i in range (num_steps):
+		if ((100*i)/num_steps)%5 == 0:
+			print(str((100*i)/num_steps)+"%",end="\r")
+		scheduler.assign(vehicles, rides, i)
+		for v in vehicles:
+			v.move()
+
+	io.write_file(f+".out", vehicles)
+	print("Finished:",f)
