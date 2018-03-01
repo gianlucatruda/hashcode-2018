@@ -1,5 +1,4 @@
 def assign(vehicles, rides, curr_time):
-	# print("foo")
 	for v in vehicles:
 		allAssigned = True
 		for ind, r in enumerate(rides):

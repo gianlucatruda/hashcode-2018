@@ -23,10 +23,8 @@ for i in range(num_cars):
 for l in ride_list:
 	rides.append(ride.ride(l))
 # The meat
-print("debug")
 for i in range (num_steps):
 	scheduler.assign(vehicles, rides, i)
-	
 	for v in vehicles:
 		v.move()
 
