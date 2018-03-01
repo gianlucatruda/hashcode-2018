@@ -2,10 +2,12 @@ import ride
 import math
 
 class vehicle:
-    ttl = 0
-    curr = ride.ride([0,0,0,0,0,0])
-    curr_pos =[0,0]
-    rides = []
+
+    def __init__(self):
+        self.rides = []
+        self.ttl = 0
+        self.curr = ride.ride([0,0,0,0,0,0])
+        self.curr_pos =[0,0]
 
     def move(self):
         self.ttl -= 1
@@ -16,7 +18,6 @@ class vehicle:
         self.rides.append(ride_index)
 
         self.curr = ride
-
         dist1 = self.distance(self.curr_pos, [ride.data[0], ride.data[1]])
         dist2 = self.distance([ride.data[0], ride.data[1]], [ride.data[2], ride.data[3]])
 
